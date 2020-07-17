@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import {IMaskModule} from 'angular-imask';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AngularNeo4jModule } from 'angular-neo4j';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -29,6 +30,7 @@ import { AdicionarComponent } from './adicionar/adicionar.component';
     IMaskModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    AngularNeo4jModule,
     routing 
   ],
   providers: [],

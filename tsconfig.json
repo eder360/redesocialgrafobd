@@ -6,6 +6,9 @@
 */
 {
   "files": [],
+  "types": [
+      "webpack-env"
+    ],
   "references": [
     {
       "path": "./tsconfig.app.json"
