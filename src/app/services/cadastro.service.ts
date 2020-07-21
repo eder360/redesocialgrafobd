@@ -22,20 +22,23 @@ export class CadastroService {
 
     var session = driver.session();
 
-    try {
+
       const result = await session.run(
         query,
         params
       )
-
       const singleRecord = result.records[0]
-      const node = singleRecord.get(0)
 
-      console.log(node.properties.name)
-    } finally {
-      await session.close()
-    }
-
-    driver.close();
+      if (singleRecord == undefined) {
+        session.close();
+        driver.close();
+        return false;
+      } else {
+        const node = singleRecord.get(0)
+        console.log(node.properties.name)
+        session.close();
+        driver.close();
+        return true;
+      }
   }
 }

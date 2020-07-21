@@ -13,12 +13,16 @@
                         <div class="profile-header-content">
                             <!-- BEGIN profile-header-img -->
                             <div class="profile-header-img">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+                                <img *ngIf="sexo == true" src="https://bootdey.com/img/Content/avatar/avatar7.png"
+                                    alt="">
+                                <img *ngIf="sexo == false" src="https://bootdey.com/img/Content/avatar/avatar5.png"
+                                    alt="">
                             </div>
                             <!-- END profile-header-img -->
                             <!-- BEGIN profile-header-info -->
                             <div class="profile-header-info">
-                                <h4 class="m-t-10 m-b-5">Sean Ngu</h4>
+                                <h4 class="m-t-10 m-b-5">{{dadosUsuarioView.name + " " + dadosUsuarioView.lastName}}
+                                </h4>
                                 <p class="m-b-10">UXUI + Frontend Developer</p>
                                 <a href="#" class="btn btn-xs btn-yellow">Edit Profile</a>
                             </div>
@@ -48,24 +52,28 @@
                     <div class="tab-content p-0">
                         <!-- begin #profile-friends tab -->
                         <div class="tab-pane fade in active show" id="profile-friends">
-                            <h4 class="m-t-0 m-b-20">Friend List (14)</h4>
+                            <h4 class="m-t-0 m-b-20">Usuários ({{numeroUsuario}})</h4>
                             <!-- begin row -->
                             <div class="row row-space-2">
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[0]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
+                                                <img *ngIf="this.listaUsuarios[0]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                    class="media-object img-circle">
+                                                <img *ngIf="this.listaUsuarios[0]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
                                                     class="media-object img-circle">
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">James Pittman</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[0]?.name + " " + this.listaUsuarios[0]?.lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('0')">{{this.listaUsuarios[0].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"
                                                         aria-expanded="false"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right"
@@ -74,7 +82,7 @@
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -82,26 +90,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[1]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[1]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[1]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Mitchell Ashcroft</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[1].name + " " + this.listaUsuarios[1].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('1')">{{this.listaUsuarios[1].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -109,20 +123,26 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[2]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[2]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[2]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Ella Cabena</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[2].name + " " + this.listaUsuarios[2].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('2')">{{this.listaUsuarios[2].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"
                                                         aria-expanded="false"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right" x-placement="top-end"
@@ -130,7 +150,7 @@
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -138,26 +158,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[3]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Declan Dyson</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[3].name + " " + this.listaUsuarios[3].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('3')">{{this.listaUsuarios[3].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -165,26 +191,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[4]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">George Seyler</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[4].name + " " + this.listaUsuarios[4].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('4')">{{this.listaUsuarios[4].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -192,26 +224,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[5]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Patrick Musgrove</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[5].name + " " + this.listaUsuarios[5].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('5')">{{this.listaUsuarios[5].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -219,26 +257,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[6]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Taj Connal</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[6].name + " " + this.listaUsuarios[6].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('6')">{{this.listaUsuarios[6].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -246,26 +290,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[7]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Laura Pollock</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[7].name + " " + this.listaUsuarios[7].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('7')">{{this.listaUsuarios[7].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -273,26 +323,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[8]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar2.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Dakota Mannix</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[8].name + " " + this.listaUsuarios[8].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('8')">{{this.listaUsuarios[8].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -300,26 +356,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[9]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Timothy Woolley</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[9].name + " " + this.listaUsuarios[9].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('9')">{{this.listaUsuarios[9].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -327,26 +389,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[10]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar5.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Benjamin Congreve</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[10].name + " " + this.listaUsuarios[10].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('10')">{{this.listaUsuarios[10].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -354,26 +422,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[11]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Mariam Maddock</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[11].name + " " + this.listaUsuarios[11].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('11')">{{this.listaUsuarios[11].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -381,26 +455,32 @@
                                 </div>
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[12]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Blake Gerrald</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[12].name + " " + this.listaUsuarios[12].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('12')">{{this.listaUsuarios[12].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -410,26 +490,32 @@
                                 <!-- begin col-6 -->
                                 <!-- end col-6 -->
                                 <!-- begin col-6 -->
-                                <div *ngIf="true" class="col-md-6 m-b-2">
+                                <div *ngIf="this.listaUsuarios[13]" class="col-md-6 m-b-2">
                                     <div class="p-10 bg-white">
                                         <div class="media media-xs overflow-visible">
                                             <a class="media-left" href="javascript:;">
-                                                <img src="https://bootdey.com/img/Content/avatar/avatar4.png" alt=""
-                                                    class="media-object img-circle">
+                                                <a class="media-left" href="javascript:;">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'M'" src="https://www.w3schools.com/howto/img_avatar.png" alt=""
+                                                        class="media-object img-circle">
+                                                    <img *ngIf="this.listaUsuarios[3]?.genre == 'F'" src="https://www.w3schools.com/howto/img_avatar2.png" alt=""
+                                                        class="media-object img-circle">
+                                                </a>
                                             </a>
                                             <div class="media-body valign-middle">
-                                                <b class="text-inverse">Gabrielle Bunton</b>
+                                                <b
+                                                    class="text-inverse">{{this.listaUsuarios[13].name + " " + this.listaUsuarios[13].lastName}}</b>
                                             </div>
                                             <div class="media-body valign-middle text-right overflow-visible">
                                                 <div class="btn-group dropdown">
-                                                    <a href="javascript:;" class="btn btn-default">Friends</a>
-                                                    <a href="javascript:;" data-toggle="dropdown"
+                                                    <a href="javascript:;"
+                                                        class="btn btn-primary" (click)="acaoClick('13')">{{this.listaUsuarios[13].amigo}}</a>
+                                                    <!-- <a href="javascript:;" data-toggle="dropdown"
                                                         class="btn btn-default dropdown-toggle"></a>
                                                     <ul class="dropdown-menu dropdown-menu-right">
                                                         <li><a href="javascript:;">Adicionar</a></li>
                                                         <li><a href="javascript:;">Remover</a></li>
                                         
-                                                    </ul>
+                                                    </ul> -->
                                                 </div>
                                             </div>
                                         </div>
