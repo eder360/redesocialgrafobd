@@ -41,7 +41,7 @@ export class AdicionarService {
   }
 
   async listarNaoAmigo(_email: string) {
-    const query = 'MATCH (a:Person {email: $email}), (b:Person) WHERE NOT (a)-[:EH_AMIGO]-(b) RETURN b';
+    const query = 'MATCH (a:Person {email: $email}), (b:Person) WHERE NOT (a)-[:EH_AMIGO]->(b) RETURN b';
     const params = { email: _email};
 
     const neo4j = require('neo4j-driver')

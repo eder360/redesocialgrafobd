@@ -31,7 +31,7 @@ export class AdicionarComponent implements OnInit {
     const listaAmigos = await this._service.listarAmigos(this.dadosUsuarioView.email);
     const listarNaoAmigo = await this._service.listarNaoAmigo(this.dadosUsuarioView.email);
 
-    this.numeroUsuario = listaAmigos.length + listarNaoAmigo.length;
+    this.numeroUsuario = (listaAmigos.length + listarNaoAmigo.length) - 1;
 
     // Faz o filtro para listar apenas os objetos de amigos
     for (let i = 0; i < listaAmigos.length; i++){
